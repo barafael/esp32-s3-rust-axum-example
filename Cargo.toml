@@ -5,10 +5,14 @@ authors = ["Gábor Gyebnár <korteur@gmail.com>"]
 edition = "2021"
 
 [dependencies]
+async-nats = { version = "0.38", default-features = false, features = [
+    "aws-lc-rs",
+] }
+aws-lc-rs = { version = "1.12.4", features = ["bindgen"] }
+aws-lc-fips-sys = { version = "0.12.10", features = ["bindgen"] }
+aws-lc-sys = { version = "0.26.0", features = ["bindgen"] }
 panic-halt = "0"
 anyhow = "1"
-axum = { version = "0", features = ["http1", "json"] }
-axum-macros = "0"
 heapless = "0.8.0"
 embedded-hal = "1"
 embedded-svc = { version = "0", features = ["experimental"] }
@@ -18,7 +22,14 @@ esp-idf-hal = "0"
 log = "0"
 serde = "1"
 serde_json = "1"
-tokio = { version = "1", features = ["rt", "net", "io-util", "macros"] }
+tokio = { version = "1", features = [
+    "rt",
+    "net",
+    "io-util",
+    "macros",
+    "time",
+    "sync",
+] }
 
 [build-dependencies]
 build-data = "0"

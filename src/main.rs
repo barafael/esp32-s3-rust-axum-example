@@ -28,7 +28,7 @@ fn main() {
             error!("{err:?}");
             // Let them read the error message before rebooting
             sleep(std::time::Duration::from_secs(3));
-        },
+        }
     }
 
     esp_idf_hal::reset::restart();
